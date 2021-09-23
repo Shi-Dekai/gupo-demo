@@ -16,6 +16,7 @@
           v-model="item.describe"
           :class="{ fulfilled: item.finish }"
         />
+        <van-icon name="delete-o" @click="deleteItem(index)" />
       </div>
     </main>
   </div>
@@ -56,6 +57,9 @@ export default {
     addItem() {
       this.list.push({ finish: false, describe: "" });
     },
+    deleteItem(index) {
+      this.list.splice(index, 1);
+    },
   },
 };
 </script>
@@ -86,6 +90,11 @@ export default {
       }
       .fulfilled {
         text-decoration-line: line-through;
+      }
+      .van-icon-delete-o {
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
       }
     }
   }
