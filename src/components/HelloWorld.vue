@@ -53,12 +53,30 @@ export default {
       ],
     };
   },
+  watch: {
+    list: {
+      deep: true,
+      handler(newVal) {
+        this.setList(newVal);
+      },
+    },
+  },
+  mounted() {
+    this.getList();
+  },
   methods: {
     addItem() {
       this.list.push({ finish: false, describe: "" });
     },
     deleteItem(index) {
       this.list.splice(index, 1);
+    },
+    setList(list) {
+      window.localStorage.setItem("list", JSON.stringify(list));
+    },
+    getList() {
+      const list = JSON.parse(window.localStorage.getItem("list"));
+      if (list) this.list = list;
     },
   },
 };
