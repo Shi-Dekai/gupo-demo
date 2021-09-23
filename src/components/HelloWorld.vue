@@ -3,12 +3,12 @@
     <header class="header">
       <span>今天 4/20周一</span>
       <span class="add">
-        <VanIcon name="plus" @click="addItem" />
+        <van-icon name="plus" @click="addItem" />
       </span>
     </header>
     <main class="list">
       <div class="item" v-for="(item, index) in list" :key="index">
-        <VanCheckbox v-model="item.finish" />
+        <van-checkbox v-model="item.finish" />
         <input
           class="describe"
           type="text"
@@ -26,8 +26,8 @@ import { Checkbox, Icon } from "vant";
 export default {
   name: "HelloWorld",
   components: {
-    VanCheckbox: Checkbox,
-    VanIcon: Icon,
+    [Checkbox.name]: Checkbox,
+    [Icon.name]: Icon,
   },
   data() {
     return {
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     addItem() {
-      this.list.push({ finish: false, describe: "" })
+      this.list.push({ finish: false, describe: "" });
     },
   },
 };
